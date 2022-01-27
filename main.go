@@ -2,19 +2,20 @@ package main
 
 import (
 	"fmt"
-	"log"
 
-	"github.com/lhs/learngo/accounts"
+	"github.com/lhs/learngo/mydict"
 )
 
-//private = 소문자
-//public = 대문자
 func main() {
-	account := accounts.NewAccount("lhs")
-	account.Deposit(10)
-	err := account.Withdraw(20)
+	dictionary := mydict.Dictionary{}
+	baseWord := "hello"
+	dictionary.Add(baseWord, "First")
+	dictionary.Search(baseWord)
+	dictionary.Delete(baseWord)
+	word, err := dictionary.Search(baseWord)
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
+	} else {
+		fmt.Println(word)
 	}
-	fmt.Println(account.String())
 }
